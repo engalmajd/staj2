@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  rasa:
+    image: rasa/rasa:2.8.0
+    ports:
+      - "5005:5005"
+    volumes:
+      - .:/app
+    command: run --enable-api
+
+  actions:
+    image: rasa/rasa-sdk:2.8.0
+    ports:
+      - "5055:5055"
+    volumes:
+      - ./actions:/app/actions
+    command: run
